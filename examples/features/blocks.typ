@@ -14,7 +14,6 @@
   it
 )
 
-= Blocks
 
 我们提供了一系列块函数，以为你带来类似 Obsidian 中 callout 功能的体验。你可以通过修改 `state-block-theme` 状态来使用不同的预设主题，并通过 `blockx` 函数来使用预设块。
 

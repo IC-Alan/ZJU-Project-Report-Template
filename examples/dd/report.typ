@@ -1,7 +1,6 @@
 #import "../../template.typ": *
 
 #show: project.with(
-  theme: "lab",
   title: "数字逻辑设计 实验报告",
   course: "数字逻辑设计",
   semester: "2023-2024 Spring & Summer",
@@ -13,7 +12,7 @@
   teacher: "某老师",
 )
 
-#lab_header(name: "Lab1: 第一次实验", place: "紫金港 东x-xxx", date: "20xx年xx月xx日")
+#lab-header(name: "Lab1: 第一次实验", place: "紫金港 东x-xxx", date: "20xx年xx月xx日")
 
 = 实验一：Verilog 入门
 
@@ -28,8 +27,8 @@
 #codly-filename("path/to/MyMC14495.v")
 #raw(read("./MyMC14495.v"), block: true, lang: "verilog")
 
-#lab_header(name: "Lab2: 第二次实验", place: "紫金港 东x-xxx", date: "20xx年xx月xx日")
+#lab-header(name: "Lab2: 第二次实验", place: "紫金港 东x-xxx", date: "20xx年xx月xx日")
 
-#strong[多次实验的报告也可整合到一份文档中。]
+#text(fill: red, weight: "bold")[多次实验的报告也可整合到一份文档中。]
 
 #lorem(120)

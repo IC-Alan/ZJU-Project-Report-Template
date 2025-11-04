@@ -33,7 +33,8 @@
 }
 
 #let fakebold(content) = {
-  set text(stroke: 0.02857em) // https://gist.github.com/csimide/09b3f41e838d5c9fc688cc28d613229f
+  // https://gist.github.com/csimide/09b3f41e838d5c9fc688cc28d613229f
+  set text(stroke: 0.02857em)
   content
 }
 
@@ -137,7 +138,7 @@
 )
 
 #let project(
-  theme: "project",
+  theme: "exp",
   block_theme: "default",
   course: "<course>",
   title: "<title>",
@@ -202,7 +203,7 @@
   body,
 ) = {
   font_mono = (..font_mono, ..font_sans_serif)
-  if (theme == "lab") {
+  if (theme == "lab" or theme == "exp") {
     if (cover_image_size == none) {
       cover_image_size = 48%
     }
@@ -247,7 +248,7 @@
   state-block-theme.update(block_theme)
 
   // Cover Page
-  if (theme == "lab") {
+  if (theme == "lab" or theme == "exp") {
     v(1fr)
     {
       set align(center)
@@ -379,6 +380,9 @@
   show heading.where(level: 1): it => block(above: 1.5em, below: 1em, it.body)
 
   if (theme == "lab") {
+  show link: it => text(fill: rgb("#0000FF"), it)
+
+  if (theme == "lab" or theme == "exp") {
     set heading(
       numbering: (..args) => {
         let nums = args.pos()
@@ -409,37 +413,7 @@
   }
 }
 
-#let codex(code, lang: none, filename: none, size: 1em, stroke: 0.5pt + luma(150), inset: 1em, radius: 0.25em) = {
-  if code.len() > 0 {
-    if code.ends-with("\n") {
-      code = code.slice(0, code.len() - 1)
-    }
-  } else {
-    code = "// code not found"
-  }
-
-  set text(size: size)
-  set align(left)
-  if filename != none {
-    block(
-      width: 100%,
-      stroke: stroke,
-      radius: radius,
-      clip: true,
-      stack(
-        {
-          block(width: 100%, inset: inset, filename)
-        },
-        line(length: 100%, stroke: stroke),
-        block(width: 100%, inset: inset, raw(lang: lang, block: true, code)),
-      ),
-    )
-  } else {
-    block(width: 100%, stroke: stroke, radius: radius, inset: inset, raw(lang: lang, block: true, code))
-  }
-}
-
-#let lab_header(
+#let lab-header(
   course: none,
   type: "综合",
   name: "<name>",
@@ -513,7 +487,7 @@
   )
 }
 
-#let lab_header_2(
+#let lab-header-2(
   major: none,
   author: none,
   school_id: none,

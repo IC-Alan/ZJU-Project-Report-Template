@@ -6,7 +6,7 @@
   table_of_contents: false,
 )
 
-#lab_header_2(
+#lab-header-2(
   major: "计算机科学与技术",
   author: "xxx",
   school_id: "xxxxxxxxxx",
