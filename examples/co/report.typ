@@ -1,7 +1,6 @@
 #import "../../template.typ": *
 
 #show: project.with(
-  theme: "lab",
   title: "计算机组成 实验一",
   course: "计算机组成",
   name: "实验一：xxx",

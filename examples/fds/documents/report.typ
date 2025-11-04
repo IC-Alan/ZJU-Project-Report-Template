@@ -20,30 +20,27 @@ Description (pseudo-code preferred) of all the algorithms involved for solving t
 
 == Step One
 
-#lorem(20)
+#lorem(10)
 
 == Step Two
 
-#lorem(30)
-
-== Step Three // Auto-numbering is supported
-
-#lorem(50)
+#lorem(10)
 
 = *Chapter 3*: Testing Results
 
 Table of test cases. Each test case usually consists of a brief description of the purpose of this case, the expected result, the actual behavior of your program, the possible cause of a bug if your program does not function as expected, and the current status ("pass", or
 "corrected", or "pending").
 
-#table(
+#grid(
   columns: (1fr, 1fr),
+  gutter: 1em,
   align: top,
-  inset: 10pt,
-  [Sample Input], [Sample Output],
   [
+    #codly-filename("Sample Input")
     #raw(read("../code/sample.in"), block: true)
   ],
   [
+    #codly-filename("Sample Output")
     #raw(read("../code/sample.out"), block: true)
   ],
 )
@@ -70,8 +67,8 @@ Analysis of the time and space complexities of the algorithms. Comments on furth
 
 At least 30% of the lines must be commented. Otherwise the code will NOT be evaluated.
 
-#codex(read("../code/sol.c"), filename: [*File*: sol.c], lang: "c")
-// use `importCode` function to read code from a file
+#codly-filename("code/sol.c")
+#raw(read("../code/sol.c"), block: true, lang: "c")
 
 = *Declaration*
 

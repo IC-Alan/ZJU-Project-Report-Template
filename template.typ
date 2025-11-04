@@ -1,5 +1,12 @@
-#import "@preview/tablex:0.0.9": tablex, colspanx, rowspanx, hlinex, vlinex, cellx
+#import "@preview/tablex:0.0.9": cellx, colspanx, hlinex, rowspanx, tablex, vlinex
+
+// showybox
 #import "@preview/showybox:2.0.4": showybox
+
+// (optional) codly
+#import "@preview/codly:1.3.0": *
+#import "@preview/codly-languages:0.1.1": *
+#let codly-filename(title) = codly(header: align(center)[*#title*])
 
 #let state-course = state("course", none)
 #let state-author = state("author", none)
@@ -227,6 +234,9 @@
   show math.equation: set text(weight: 400)
 
   set par(spacing: 1.2em, leading: 0.75em)
+
+  show: codly-init.with()
+  codly(languages: codly-languages)
 
   // Update global state
   state-course.update(course)

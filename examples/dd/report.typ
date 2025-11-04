@@ -25,7 +25,8 @@
 
 在 `MyMC14495.v` 文件中，我们实现了 `MC14495` 模块的 Verilog 代码…… #lorem(100)
 
-#codex(read("./MyMC14495.v"), filename: [*File*: MyMC14495.v], lang: "verilog")
+#codly-filename("path/to/MyMC14495.v")
+#raw(read("./MyMC14495.v"), block: true, lang: "verilog")
 
 #lab_header(name: "Lab2: 第二次实验", place: "紫金港 东x-xxx", date: "20xx年xx月xx日")
 
