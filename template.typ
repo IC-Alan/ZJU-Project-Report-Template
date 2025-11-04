@@ -156,6 +156,7 @@
   major: none,
   cover_comments: none,
   cover_comments_size: 1.25em,
+  cover_info: none,
   language: none,
   table_of_contents: none,
   font_serif: (
@@ -257,41 +258,48 @@
     }
     v(2fr)
     let rows = ()
-    if (course != none) {
-      rows.push("课程名称")
-      rows.push(course)
+    if (cover_info == none) {
+      cover_info = (
+        "课程名称": course,
+        "实验名称": name,
+        "姓名": author,
+        "学号": school_id,
+        "学院": college,
+        "专业": major,
+        "实验地点": place,
+        "指导教师": teacher,
+        "报告日期": date,
+      )
     }
-    if (name != none) {
-      rows.push("实验名称")
-      rows.push(name)
-    }
-    if (author != none) {
-      rows.push([姓$space.quad space.quad$名])
-      rows.push(author)
-    }
-    if (school_id != none) {
-      rows.push([学$space.quad space.quad$号])
-      rows.push(school_id)
-    }
-    if (college != none) {
-      rows.push([学$space.quad space.quad$院])
-      rows.push(college)
-    }
-    if (major != none) {
-      rows.push([专$space.quad space.quad$业])
-      rows.push(major)
-    }
-    if (place != none) {
-      rows.push([实验地点])
-      rows.push(place)
-    }
-    if (teacher != none) {
-      rows.push([指导教师])
-      rows.push(teacher)
-    }
-    if (date != none) {
-      rows.push([报告日期])
-      rows.push(date)
+    for (key, value) in cover_info {
+      // 注意: 中文字一个字符占据的宽度为 3
+      if (value == none) {
+        continue
+      }
+      let words = key.len() / 3
+      if (words == 1) {
+        rows.push({
+          h(3em)
+          key.at(0)
+        })
+      } else if (words == 2) {
+        rows.push({
+          key.at(0)
+          h(2em)
+          key.at(3)
+        })
+      } else if (words == 3) {
+        rows.push({
+          key.at(0)
+          h(0.5em)
+          key.at(3)
+          h(0.5em)
+          key.at(6)
+        })
+      } else {
+        rows.push(key)
+      }
+      rows.push([#value])
     }
     align(
       center,
@@ -379,7 +387,6 @@
   show heading: it => block(above: 1.8em, below: 1.2em, it)
   show heading.where(level: 1): it => block(above: 1.5em, below: 1em, it.body)
 
-  if (theme == "lab") {
   show link: it => text(fill: rgb("#0000FF"), it)
 
   if (theme == "lab" or theme == "exp") {
